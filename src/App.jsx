@@ -664,7 +664,7 @@ export default function App() {
         </div>
 
         {/* SLIDE 2: El Diagnóstico (El Dolor Operativo) */}
-        <div className="min-w-full h-screen shrink-0 snap-center flex flex-col items-center justify-center px-8 md:px-16 py-20 relative overflow-hidden z-10">
+        <div className="min-w-full h-screen shrink-0 snap-center flex flex-col items-center justify-center px-8 md:px-16 py-10 relative overflow-hidden z-10">
           <motion.div
             variants={slideVariants}
             initial="hidden"
@@ -672,87 +672,106 @@ export default function App() {
             className="max-w-6xl w-full flex flex-col justify-center items-center h-full"
           >
             {/* Section Header */}
-            <div className="text-center mb-8">
+            <div className="text-center mb-5">
               <motion.span
                 variants={elementVariants}
-                className="text-[10px] font-mono text-goldAccent font-bold tracking-widest uppercase mb-2 block"
+                className="text-[10px] font-mono text-fireAccent font-bold tracking-widest uppercase mb-2 block"
               >
-                Modelo de Negocio para Franquiciados
+                Diagnóstico del Dolor Operativo
               </motion.span>
               <motion.h2
                 variants={elementVariants}
                 className="text-3xl md:text-5xl font-extrabold tracking-tight font-display text-textPrimary mb-3"
               >
-                Mística Gastronómica, Operada con Precisión de Software
+                El Costo Invisible de Operar en Analógico
               </motion.h2>
               <motion.p
                 variants={elementVariants}
                 className="text-xs md:text-sm text-textSecondary max-w-2xl mx-auto leading-relaxed"
               >
-                El inversor moderno no compra solo recetas; busca un modelo de negocio de alta productividad. Fusionamos la calidad de Criollo con tecnología que optimiza el tiempo, la organización y la rentabilidad de cada local.
+                Saturación de personal, reservas caídas y falta de filtros de capital: las grietas silenciosas que limitan la escalabilidad de tu marca.
               </motion.p>
             </div>
 
             {/* 3 Cyber Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl pointer-events-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-5xl pointer-events-auto">
               
-              {/* Card 1: Excelencia Gastronómica */}
+              {/* Card 1: Fricción en Reservas */}
               <PremiumCard
-                className="p-6 h-[295px] flex flex-col justify-between border-t-4 border-t-goldAccent"
+                className="p-6 h-[295px] flex flex-col justify-between border-t-4 border-t-fireAccent"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-lg bg-goldAccent/10 border border-goldAccent/25 flex items-center justify-center text-goldAccent mb-4 shadow-[0_0_15px_rgba(200,162,97,0.15)]">
-                    <Sparkles className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-lg bg-fireAccent/10 border border-fireAccent/25 flex items-center justify-center text-fireAccent mb-4 shadow-[0_0_15px_rgba(227,94,56,0.15)]">
+                    <Smartphone className="w-5 h-5" />
                   </div>
                   <h3 className="font-display font-extrabold text-lg md:text-xl text-textPrimary mb-2">
-                    Prestigio Gastronómico Validado
+                    Reservas Caídas por Demora
                   </h3>
                   <p className="text-xs md:text-sm text-textSecondary leading-relaxed font-sans">
-                    Tus locales transmiten historia, sabor y calidad culinaria de primer nivel. Un producto clásico y consolidado que atrae clientes de manera orgánica, posicionando a la franquicia como un referente indiscutible.
+                    Responder WhatsApps a mano en horas de alta demanda satura a tus camareros. La demora promedio de 20 minutos ahuyenta a los clientes de alto ticket y negocios.
                   </p>
                 </div>
-                <div className="text-[10px] font-mono text-goldAccent font-bold uppercase tracking-wider">
-                  Marca de Alta Demanda
+                <div className="text-[10px] font-mono text-fireAccent font-bold uppercase tracking-wider">
+                  Fuga Financiera 01
                 </div>
               </PremiumCard>
 
-              {/* Card 2: Productividad & Tiempo */}
+              {/* Card 2: No-Shows y Mesas Congeladas */}
               <PremiumCard
-                className="p-6 h-[295px] flex flex-col justify-between border-t-4 border-t-goldAccent"
+                className="p-6 h-[295px] flex flex-col justify-between border-t-4 border-t-fireAccent"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-lg bg-goldAccent/10 border border-goldAccent/25 flex items-center justify-center text-goldAccent mb-4 shadow-[0_0_15px_rgba(200,162,97,0.15)]">
-                    <Sliders className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-lg bg-fireAccent/10 border border-fireAccent/25 flex items-center justify-center text-fireAccent mb-4 shadow-[0_0_15px_rgba(227,94,56,0.15)]">
+                    <TrendingDown className="w-5 h-5" />
                   </div>
                   <h3 className="font-display font-extrabold text-lg md:text-xl text-textPrimary mb-2">
-                    Productividad & Tiempo
+                    No-Shows y Mesas Congeladas
                   </h3>
                   <p className="text-xs md:text-sm text-textSecondary leading-relaxed font-sans">
-                    La tecnología blinda la operación diaria de tu local. Bruno AI atiende WhatsApp en segundos, concreta reservas y libera al personal de tareas manuales repetitivas, optimizando el tiempo y reduciendo costos de personal.
+                    Los clientes que reservan y no asisten (no-shows) bloquean tu salón en horas pico. Bruno envía recordatorios automáticos de confirmación para liberar y revender la mesa al instante.
                   </p>
                 </div>
-                <div className="text-[10px] font-mono text-goldAccent font-bold uppercase tracking-wider">
-                  Eficiencia Operativa
+                <div className="text-[10px] font-mono text-fireAccent font-bold uppercase tracking-wider">
+                  Fuga Financiera 02
                 </div>
               </PremiumCard>
 
-              {/* Card 3: Organización Centralizada */}
+              {/* Card 3: Filtro de Inversores */}
               <PremiumCard
-                className="p-6 h-[295px] flex flex-col justify-between border-t-4 border-t-goldAccent"
+                className="p-6 h-[295px] flex flex-col justify-between border-t-4 border-t-fireAccent"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-lg bg-goldAccent/10 border border-goldAccent/25 flex items-center justify-center text-goldAccent mb-4 shadow-[0_0_15px_rgba(200,162,97,0.15)]">
-                    <ShieldCheck className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-lg bg-fireAccent/10 border border-fireAccent/25 flex items-center justify-center text-fireAccent mb-4 shadow-[0_0_15px_rgba(227,94,56,0.15)]">
+                    <ShieldAlert className="w-5 h-5" />
                   </div>
                   <h3 className="font-display font-extrabold text-lg md:text-xl text-textPrimary mb-2">
-                    Organización Centralizada
+                    Desgaste de Expansión
                   </h3>
                   <p className="text-xs md:text-sm text-textSecondary leading-relaxed font-sans">
-                    El 84% de los inversores de hoy prefiere franquicias con tecnología en su ADN. Conectamos reservas, historial de clientes y viabilidad en Airtable: control total de cada local sin planillas de papel ni desorganización.
+                    Atender llamadas de interesados en abrir franquicias de Criollo sin un filtro financiero previo drena tiempo clave de los socios fundadores en reuniones improductivas.
                   </p>
                 </div>
-                <div className="text-[10px] font-mono text-goldAccent font-bold uppercase tracking-wider">
-                  Tecnología de Escalabilidad
+                <div className="text-[10px] font-mono text-fireAccent font-bold uppercase tracking-wider">
+                  Fuga Financiera 03
+                </div>
+              </PremiumCard>
+
+              {/* Card 4: Propuesta de Franquicias (Horizontal Card) */}
+              <PremiumCard
+                className="col-span-1 md:col-span-3 p-4 md:p-5 flex flex-col md:flex-row items-center justify-between gap-4 border-l-4 border-l-goldAccent bg-cardBg/90"
+              >
+                <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+                  <div className="w-9 h-9 rounded-lg bg-goldAccent/10 border border-goldAccent/25 flex items-center justify-center text-goldAccent mb-0 shadow-[0_0_12px_rgba(200,162,97,0.15)] shrink-0">
+                    <Sparkles className="w-4.5 h-4.5" />
+                  </div>
+                  <div>
+                    <h3 className="font-display font-extrabold text-base md:text-lg text-textPrimary mb-1 leading-snug">
+                      La Alianza de Futuro: Prestigio Culinario & Eficiencia Operativa
+                    </h3>
+                    <p className="text-xs md:text-sm text-textSecondary leading-relaxed font-sans">
+                      Posicionamos a Criollo como una marca de alta gama con tecnología de punta. El 84% de los inversores busca marcas que integren automatización en su ADN: la combinación perfecta de calidad gastronómica tradicional acompañada por una tecnología que optimiza la productividad, el tiempo y la organización interna de todos tus locales.
+                    </p>
+                  </div>
                 </div>
               </PremiumCard>
 
