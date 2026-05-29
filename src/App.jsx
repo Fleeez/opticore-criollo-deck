@@ -616,17 +616,47 @@ export default function App() {
             {/* H1 Title */}
             <motion.h1
               variants={elementVariants}
-              className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 font-display leading-tight w-full"
+              className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 font-display leading-tight w-full select-none"
             >
-              <span className="text-goldAccent">Criollo: </span>
-              <span className="bg-gradient-to-r from-[#E6C594] via-[#C8A261] to-[#8C6D3D] bg-clip-text text-transparent text-glow-gold">
-                Bodegón posta con tecnología de verdad.
+              <span className="text-goldAccent inline-block mr-3">
+                {"Criollo:".split("").map((char, cIdx) => (
+                  <span
+                    key={cIdx}
+                    className="inline-block hover:text-[#FAF8F5] hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(200,162,97,0.8)] transition-all duration-200 ease-out cursor-default origin-center"
+                  >
+                    {char}
+                  </span>
+                ))}
+              </span>
+              <span className="bg-gradient-to-r from-[#E6C594] via-[#C8A261] to-[#8C6D3D] bg-clip-text text-transparent text-glow-gold inline-block">
+                {"Bodegón posta con tecnología de verdad.".split(" ").map((word, wIdx) => (
+                  <span key={wIdx} className="inline-block whitespace-nowrap mr-[0.25em]">
+                    {word.split("").map((char, cIdx) => (
+                      <span
+                        key={cIdx}
+                        className="inline-block hover:text-[#FAF8F5] hover:scale-115 hover:drop-shadow-[0_0_15px_rgba(200,162,97,0.9)] transition-all duration-200 ease-out cursor-default origin-center"
+                      >
+                        {char}
+                      </span>
+                    ))}
+                  </span>
+                ))}
               </span>
               <span className="block text-xl md:text-3xl font-display font-medium text-textSecondary mt-3 tracking-wider uppercase">
-                De Experiencia Gastronómica a Ecosistema Escalable
+                {"De Experiencia Gastronómica a Ecosistema Escalable".split(" ").map((word, wIdx) => (
+                  <span key={wIdx} className="inline-block whitespace-nowrap mr-[0.25em]">
+                    {word.split("").map((char, cIdx) => (
+                      <span
+                        key={cIdx}
+                        className="inline-block hover:text-[#FAF8F5] hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(200,162,97,0.6)] transition-all duration-200 ease-out cursor-default origin-center"
+                      >
+                        {char}
+                      </span>
+                    ))}
+                  </span>
+                ))}
               </span>
             </motion.h1>
-
             {/* Subtitle */}
             <motion.p
               variants={elementVariants}
