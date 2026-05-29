@@ -619,7 +619,7 @@ export default function App() {
               className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 font-display leading-tight w-full"
             >
               <span className="text-goldAccent">Criollo: </span>
-              <span className="bg-gradient-to-r from-textPrimary via-[#FAF8F5] to-goldAccent bg-clip-text text-transparent text-glow-gold">
+              <span className="bg-gradient-to-r from-[#E6C594] via-[#C8A261] to-[#8C6D3D] bg-clip-text text-transparent text-glow-gold">
                 Bodegón posta con tecnología de verdad.
               </span>
               <span className="block text-xl md:text-3xl font-display font-medium text-textSecondary mt-3 tracking-wider uppercase">
@@ -769,7 +769,7 @@ export default function App() {
                       La Alianza de Futuro: Prestigio Culinario & Eficiencia Operativa
                     </h3>
                     <p className="text-xs md:text-sm text-textSecondary leading-relaxed font-sans">
-                      Posicionamos a Criollo como una marca de alta gama con tecnología de punta. El 84% de los inversores busca marcas que integren automatización en su ADN: la combinación perfecta de calidad gastronómica tradicional acompañada por una tecnología que optimiza la productividad, el tiempo y la organización interna de todos tus locales.
+                      El prestigio culinario de Criollo se une a una infraestructura de automatización nativa. Ofrecemos a los inversores una marca con identidad tradicional consolidada, pero impulsada por tecnología de última generación que optimiza la productividad, el tiempo de trabajo y la organización interna de cada local, transformando la pasión gastronómica en un modelo eficiente y altamente escalable.
                     </p>
                   </div>
                 </div>

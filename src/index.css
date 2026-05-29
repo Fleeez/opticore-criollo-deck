@@ -35,7 +35,7 @@ body {
 
 /* Custom interactive styles */
 .text-glow-gold {
-  text-shadow: 0 0 35px rgba(200, 162, 97, 0.45), 0 0 10px rgba(200, 162, 97, 0.2);
+  text-shadow: 0 0 40px rgba(200, 162, 97, 0.25), 0 0 10px rgba(200, 162, 97, 0.1);
 }
 
 .text-glow-fire {
