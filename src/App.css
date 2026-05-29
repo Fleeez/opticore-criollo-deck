@@ -1,0 +1,33 @@
+/* Custom styles for pitch deck elements */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.pulsing-mesh {
+  animation: pulseGlow 10s ease-in-out infinite;
+}
+
+@keyframes slideBg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-bg {
+  background: linear-gradient(-45deg, #060B14, #0C1421, #060B14, #111C2D);
+  background-size: 400% 400%;
+  animation: slideBg 15s ease infinite;
+}
