@@ -27,7 +27,7 @@ import {
   UserCheck
 } from 'lucide-react';
 
-const TOTAL_SLIDES = 10;
+const TOTAL_SLIDES = 11;
 
 // Interactive 3D Card
 function PremiumCard({ children, className = "", style = {} }) {
@@ -563,7 +563,7 @@ export default function App() {
       phase: "Fase 04",
       title: "El Compromiso Legal",
       tag: "El Cierre Automatizado",
-      logic: "Mostramos un resumen legal (NDA) de confidencialidad y requerimos checkbox obligatorio. Al hacer clic en 'Enviar Solicitud', toda la radiografía viaja instantáneamente a la primera columna de Airtable como un prospecto calificado listo para agendar."
+      logic: "Mostramos un resumen legal (NDA) de confidencialidad y requerimos checkbox obligatorio mediante Clickwrap legal. Al hacer clic en 'Enviar Solicitud', toda la radiografía del firmante junto con su IP, dispositivo y marca de tiempo se graban y viajan instantáneamente a Airtable."
     }
   ];
 
@@ -1289,7 +1289,7 @@ export default function App() {
                 variants={elementVariants}
                 className="text-xs md:text-sm text-textSecondary font-sans leading-relaxed mb-6"
               >
-                No es una simple encuesta. Es un embudo de captación diseñado psicológicamente en 4 fases para retener el contacto ante el abandono, filtrar desvíos presupuestarios y validar identidades reales antes de que toquen tu agenda.
+                No es una simple encuesta. Es un embudo de captación diseñado psicológicamente en 4 fases, respaldado por Clickwrap para validez legal, que retiene el contacto ante el abandono, filtra desvíos presupuestarios y valida identidades reales antes de que toquen tu agenda.
               </motion.p>
 
               {/* Steps Selector (Tabs) */}
@@ -2020,6 +2020,105 @@ export default function App() {
                   </span>
                 </div>
               </motion.div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* SLIDE 11: Visión de Ecosistema (El "One More Thing") */}
+        <div className="min-w-full h-screen shrink-0 snap-center flex flex-col items-center justify-center px-8 md:px-16 py-16 relative overflow-hidden z-10">
+          <motion.div
+            variants={slideVariants}
+            initial="hidden"
+            animate={activeSlide === 10 ? "visible" : "hidden"}
+            className="max-w-5xl w-full flex flex-col justify-center items-center h-full"
+          >
+            {/* Header Section */}
+            <div className="text-center mb-10">
+              <motion.span
+                variants={elementVariants}
+                className="text-[10px] font-mono text-goldAccent font-bold tracking-widest uppercase mb-3 block"
+              >
+                El "One More Thing" de Opticore
+              </motion.span>
+              <motion.h2
+                variants={elementVariants}
+                className="text-3xl md:text-5xl font-black tracking-tight font-display text-glow-gold text-textPrimary mb-3 uppercase"
+              >
+                Visión de Ecosistema | Fase 2
+              </motion.h2>
+              <motion.p
+                variants={elementVariants}
+                className="text-xs md:text-sm text-textSecondary/80 font-sans italic max-w-xl mx-auto"
+              >
+                Escalabilidad transversal: De la automatización gastronómica al cierre High-Ticket internacional.
+              </motion.p>
+            </div>
+
+            {/* Grid of Key Bullet points */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full pointer-events-auto">
+              {/* Point 1 */}
+              <motion.div
+                variants={cardVariants}
+                whileHover={{ scale: 1.02 }}
+                className="bg-cardBg/80 backdrop-blur-md border border-goldAccent/15 rounded-2xl p-6 shadow-xl flex flex-col gap-4 relative overflow-hidden"
+              >
+                <div className="w-10 h-10 rounded-lg bg-goldAccent/10 border border-goldAccent/25 flex items-center justify-center text-goldAccent shadow-[0_0_12px_rgba(200,162,97,0.15)]">
+                  <Bot className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-display font-extrabold text-base md:text-lg text-textPrimary mb-2 leading-snug">
+                    Agentes IA Especializados
+                  </h3>
+                  <p className="text-xs text-textSecondary leading-relaxed font-sans">
+                    Desarrollo de perfiles cognitivos entrenados para el sector turismo. Modelos de lenguaje afinados que entienden la psicología del viajero de alta gama.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Point 2 */}
+              <motion.div
+                variants={cardVariants}
+                whileHover={{ scale: 1.02 }}
+                className="bg-cardBg/80 backdrop-blur-md border border-goldAccent/15 rounded-2xl p-6 shadow-xl flex flex-col gap-4 relative overflow-hidden"
+              >
+                <div className="w-10 h-10 rounded-lg bg-goldAccent/10 border border-goldAccent/25 flex items-center justify-center text-goldAccent shadow-[0_0_12px_rgba(200,162,97,0.15)]">
+                  <TrendingDown className="w-5 h-5 rotate-180" />
+                </div>
+                <div>
+                  <h3 className="font-display font-extrabold text-base md:text-lg text-textPrimary mb-2 leading-snug">
+                    Operación 24/7 High-Ticket
+                  </h3>
+                  <p className="text-xs text-textSecondary leading-relaxed font-sans">
+                    Pre-calificación de prospectos y resolución de consultas complejas (visados, itinerarios, financiación) para salidas internacionales en tiempo récord.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Point 3 */}
+              <motion.div
+                variants={cardVariants}
+                whileHover={{ scale: 1.02 }}
+                className="bg-cardBg/80 backdrop-blur-md border border-goldAccent/15 rounded-2xl p-6 shadow-xl flex flex-col gap-4 relative overflow-hidden"
+              >
+                <div className="w-10 h-10 rounded-lg bg-goldAccent/10 border border-goldAccent/25 flex items-center justify-center text-goldAccent shadow-[0_0_12px_rgba(200,162,97,0.15)]">
+                  <Globe className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-display font-extrabold text-base md:text-lg text-textPrimary mb-2 leading-snug">
+                    Impacto en Cultura Nómade
+                  </h3>
+                  <p className="text-xs text-textSecondary leading-relaxed font-sans">
+                    Eliminación de la fricción operativa de madrugada, entregando prospectos calientes y filtrados directamente al equipo de ventas para su cierre inmediato.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Bottom Accent Note */}
+            <div className="mt-10 text-center border-t border-goldAccent/10 pt-4 w-full max-w-md">
+              <span className="text-[9px] text-textSecondary font-mono uppercase tracking-wider block">
+                La tecnología de Criollo es solo el blueprint de una visión de escala global.
+              </span>
             </div>
           </motion.div>
         </div>
