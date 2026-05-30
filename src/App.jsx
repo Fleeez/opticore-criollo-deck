@@ -1678,12 +1678,107 @@ export default function App() {
           </motion.div>
         </div>
 
-        {/* SLIDE 7: Visión Multi-Sector (El Motor Turístico) */}
+        {/* SLIDE 8: La Alianza Estratégica (Inversión) */}
         <div className="min-w-full h-screen shrink-0 snap-center flex flex-col items-center justify-center px-8 md:px-16 py-16 relative overflow-hidden z-10">
           <motion.div
             variants={slideVariants}
             initial="hidden"
             animate={activeSlide === 7 ? "visible" : "hidden"}
+            className="max-w-4xl w-full flex flex-col justify-center items-center h-full"
+          >
+            {/* Dark Pricing Card Container */}
+            <div className="w-full max-w-4xl pointer-events-auto">
+              <motion.div
+                variants={cardVariants}
+                className="bg-cardBg text-textPrimary p-6 md:p-8 rounded-2xl shadow-2xl border border-goldAccent/15 flex flex-col justify-between gap-6 w-full"
+              >
+                {/* Header inside the Card */}
+                <div className="text-center pb-4 border-b border-goldAccent/10">
+                  <span className="text-[10px] font-mono text-goldAccent font-bold tracking-widest uppercase mb-1.5 block">
+                    Inversión & Alianza
+                  </span>
+                  <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight font-display text-textPrimary mb-2">
+                    Un salto de calidad sin riesgo inicial
+                  </h2>
+                  <p className="text-xs md:text-sm text-textSecondary font-sans font-medium mt-1 max-w-xl mx-auto leading-relaxed">
+                    Oferta exclusiva &quot;Socio Fundador&quot; para el despliegue del ecosistema Criollo.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 md:divide-x md:divide-goldAccent/10">
+                  {/* Setup */}
+                  <div className="md:pr-6 flex flex-col justify-between">
+                    <div>
+                      <span className="text-xs font-mono text-goldAccent tracking-widest uppercase block mb-1.5">Implementación</span>
+                      <h3 className="font-display font-bold text-xl md:text-2xl text-textPrimary mb-3">Setup Integral</h3>
+                      <div className="flex items-baseline gap-1 mb-4">
+                        <span className="text-3xl md:text-4xl font-black text-glow-gold text-textPrimary">$450</span>
+                        <span className="text-sm font-semibold text-textSecondary ml-1">USD</span>
+                        <span className="text-[10px] text-textSecondary/80 ml-2 font-mono">(Única vez)</span>
+                      </div>
+                      <ul className="space-y-3 text-xs text-textSecondary">
+                        <li className="flex gap-2.5 items-center">
+                          <Check className="w-4 h-4 text-goldAccent flex-shrink-0" />
+                          <span>Landing de Franquicias Premium</span>
+                        </li>
+                        <li className="flex gap-2.5 items-center">
+                          <Check className="w-4 h-4 text-goldAccent flex-shrink-0" />
+                          <span>Motor Bruno AI</span>
+                        </li>
+                        <li className="flex gap-2.5 items-center font-bold text-textPrimary">
+                          <Check className="w-4 h-4 text-goldAccent flex-shrink-0" />
+                          <span>Web Principal de Criollo 100% Bonificada</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* SaaS */}
+                  <div className="pt-8 md:pt-0 md:pl-6 border-t md:border-t-0 border-goldAccent/10 flex flex-col justify-between">
+                    <div>
+                      <div className="flex justify-between items-center mb-1.5">
+                        <span className="text-xs font-mono text-goldAccent tracking-widest uppercase">Licencia SaaS</span>
+                        <span className="text-[8px] md:text-[9px] bg-emeraldAccent/15 text-emeraldAccent px-1.5 py-0.5 rounded font-mono font-bold uppercase">Primer mes 100% Bonificado</span>
+                      </div>
+                      <h3 className="font-display font-bold text-xl md:text-2xl text-textPrimary mb-3">Mantenimiento y Soporte</h3>
+                      <div className="flex items-baseline gap-1 mb-4">
+                        <span className="text-3xl md:text-4xl font-black text-glow-gold text-textPrimary">$220</span>
+                        <span className="text-xs font-semibold text-textSecondary ml-1">/ mes</span>
+                      </div>
+                      <ul className="space-y-3 text-xs text-textSecondary">
+                        <li className="flex gap-2.5 items-center">
+                          <Check className="w-4 h-4 text-goldAccent flex-shrink-0" />
+                          <span>Hosting de todo el ecosistema web</span>
+                        </li>
+                        <li className="flex gap-2.5 items-center">
+                          <Check className="w-4 h-4 text-goldAccent flex-shrink-0" />
+                          <span>Soporte técnico</span>
+                        </li>
+                        <li className="flex gap-2.5 items-center">
+                          <Check className="w-4 h-4 text-goldAccent flex-shrink-0" />
+                          <span>Consumo de Inteligencia Artificial</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border-t border-goldAccent/10 pt-4 text-center mt-3">
+                  <span className="text-[10px] md:text-xs text-textSecondary font-mono tracking-widest uppercase">
+                    Iniciamos el desarrollo con un anticipo del 50%. El futuro de tu marca empieza hoy.
+                  </span>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* SLIDE 9: Visión Multi-Sector (El Motor Turístico) */}
+        <div className="min-w-full h-screen shrink-0 snap-center flex flex-col items-center justify-center px-8 md:px-16 py-16 relative overflow-hidden z-10">
+          <motion.div
+            variants={slideVariants}
+            initial="hidden"
+            animate={activeSlide === 8 ? "visible" : "hidden"}
             className="max-w-5xl w-full flex flex-col justify-center items-center h-full"
           >
             {/* Subtle Badge */}
@@ -1775,12 +1870,12 @@ export default function App() {
           </motion.div>
         </div>
 
-        {/* SLIDE 8: La Estrategia del "Blueprint" (Diagnóstico Pago) */}
+        {/* SLIDE 10: La Estrategia del "Blueprint" (Diagnóstico Pago) */}
         <div className="min-w-full h-screen shrink-0 snap-center flex flex-col items-center justify-center px-8 md:px-16 py-16 relative overflow-hidden z-10">
           <motion.div
             variants={slideVariants}
             initial="hidden"
-            animate={activeSlide === 8 ? "visible" : "hidden"}
+            animate={activeSlide === 9 ? "visible" : "hidden"}
             className="max-w-5xl w-full flex flex-col justify-center items-center h-full"
           >
             {/* Subtle Badge */}
@@ -1929,102 +2024,7 @@ export default function App() {
           </motion.div>
         </div>
 
-{/* SLIDE 9: La Alianza Estratégica (Inversión) */}
-        <div className="min-w-full h-screen shrink-0 snap-center flex flex-col items-center justify-center px-8 md:px-16 py-16 relative overflow-hidden z-10">
-          <motion.div
-            variants={slideVariants}
-            initial="hidden"
-            animate={activeSlide === 9 ? "visible" : "hidden"}
-            className="max-w-4xl w-full flex flex-col justify-center items-center h-full"
-          >
-            {/* Dark Pricing Card Container */}
-            <div className="w-full max-w-4xl pointer-events-auto">
-              <motion.div
-                variants={cardVariants}
-                className="bg-cardBg text-textPrimary p-6 md:p-8 rounded-2xl shadow-2xl border border-goldAccent/15 flex flex-col justify-between gap-6 w-full"
-              >
-                {/* Header inside the Card */}
-                <div className="text-center pb-4 border-b border-goldAccent/10">
-                  <span className="text-[10px] font-mono text-goldAccent font-bold tracking-widest uppercase mb-1.5 block">
-                    Inversión & Alianza
-                  </span>
-                  <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight font-display text-textPrimary mb-2">
-                    Un salto de calidad sin riesgo inicial
-                  </h2>
-                  <p className="text-xs md:text-sm text-textSecondary font-sans font-medium mt-1 max-w-xl mx-auto leading-relaxed">
-                    Oferta exclusiva &quot;Socio Fundador&quot; para el despliegue del ecosistema Criollo.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 md:divide-x md:divide-goldAccent/10">
-                  {/* Setup */}
-                  <div className="md:pr-6 flex flex-col justify-between">
-                    <div>
-                      <span className="text-xs font-mono text-goldAccent tracking-widest uppercase block mb-1.5">Implementación</span>
-                      <h3 className="font-display font-bold text-xl md:text-2xl text-textPrimary mb-3">Setup Integral</h3>
-                      <div className="flex items-baseline gap-1 mb-4">
-                        <span className="text-3xl md:text-4xl font-black text-glow-gold text-textPrimary">$450</span>
-                        <span className="text-sm font-semibold text-textSecondary ml-1">USD</span>
-                        <span className="text-[10px] text-textSecondary/80 ml-2 font-mono">(Única vez)</span>
-                      </div>
-                      <ul className="space-y-3 text-xs text-textSecondary">
-                        <li className="flex gap-2.5 items-center">
-                          <Check className="w-4 h-4 text-goldAccent flex-shrink-0" />
-                          <span>Landing de Franquicias Premium</span>
-                        </li>
-                        <li className="flex gap-2.5 items-center">
-                          <Check className="w-4 h-4 text-goldAccent flex-shrink-0" />
-                          <span>Motor Bruno AI</span>
-                        </li>
-                        <li className="flex gap-2.5 items-center font-bold text-textPrimary">
-                          <Check className="w-4 h-4 text-goldAccent flex-shrink-0" />
-                          <span>Web Principal de Criollo 100% Bonificada</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* SaaS */}
-                  <div className="pt-8 md:pt-0 md:pl-6 border-t md:border-t-0 border-goldAccent/10 flex flex-col justify-between">
-                    <div>
-                      <div className="flex justify-between items-center mb-1.5">
-                        <span className="text-xs font-mono text-goldAccent tracking-widest uppercase">Licencia SaaS</span>
-                        <span className="text-[8px] md:text-[9px] bg-emeraldAccent/15 text-emeraldAccent px-1.5 py-0.5 rounded font-mono font-bold uppercase">Primer mes 100% Bonificado</span>
-                      </div>
-                      <h3 className="font-display font-bold text-xl md:text-2xl text-textPrimary mb-3">Mantenimiento y Soporte</h3>
-                      <div className="flex items-baseline gap-1 mb-4">
-                        <span className="text-3xl md:text-4xl font-black text-glow-gold text-textPrimary">$220</span>
-                        <span className="text-xs font-semibold text-textSecondary ml-1">/ mes</span>
-                      </div>
-                      <ul className="space-y-3 text-xs text-textSecondary">
-                        <li className="flex gap-2.5 items-center">
-                          <Check className="w-4 h-4 text-goldAccent flex-shrink-0" />
-                          <span>Hosting de todo el ecosistema web</span>
-                        </li>
-                        <li className="flex gap-2.5 items-center">
-                          <Check className="w-4 h-4 text-goldAccent flex-shrink-0" />
-                          <span>Soporte técnico</span>
-                        </li>
-                        <li className="flex gap-2.5 items-center">
-                          <Check className="w-4 h-4 text-goldAccent flex-shrink-0" />
-                          <span>Consumo de Inteligencia Artificial</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="border-t border-goldAccent/10 pt-4 text-center mt-3">
-                  <span className="text-[10px] md:text-xs text-textSecondary font-mono tracking-widest uppercase">
-                    Iniciamos el desarrollo con un anticipo del 50%. El futuro de tu marca empieza hoy.
-                  </span>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* SLIDE 11: Visión de Ecosistema (El "One More Thing") */}
+{/* SLIDE 11: Visión de Ecosistema (El "One More Thing") */}
         <div className="min-w-full h-screen shrink-0 snap-center flex flex-col items-center justify-center px-8 md:px-16 py-16 relative overflow-hidden z-10">
           <motion.div
             variants={slideVariants}
