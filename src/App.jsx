@@ -357,6 +357,40 @@ export default function App() {
   const [franchiseStep, setFranchiseStep] = useState(0);
   const [capitalRange, setCapitalRange] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [simulatedMetadata, setSimulatedMetadata] = useState(null);
+  const [isSubmittingSim, setIsSubmittingSim] = useState(false);
+
+  const handleSimulatedSubmit = async () => {
+    setIsSubmittingSim(true);
+    let ipAddress = "IP no disponible (Bloqueada por cliente)";
+    try {
+      const ipResponse = await fetch("https://api.ipify.org?format=json");
+      if (ipResponse.ok) {
+        const ipData = await ipResponse.json();
+        ipAddress = ipData.ip || ipAddress;
+      }
+    } catch (error) {
+      console.warn("Simulador: IP no disponible.");
+    }
+    
+    const ua = navigator.userAgent;
+    let deviceName = "Desconocido";
+    if (ua.includes("Windows")) deviceName = "Windows PC";
+    else if (ua.includes("Macintosh")) deviceName = "macOS Device";
+    else if (ua.includes("iPhone")) deviceName = "iPhone";
+    else if (ua.includes("Android")) deviceName = "Android Device";
+    else if (ua.includes("Linux")) deviceName = "Linux Device";
+
+    const browser = ua.includes("Chrome") ? "Chrome" : ua.includes("Firefox") ? "Firefox" : ua.includes("Safari") ? "Safari" : "Navegador";
+    
+    setSimulatedMetadata({
+      ip: ipAddress,
+      device: `${deviceName} (${browser})`,
+      date: new Date().toISOString()
+    });
+    setFormSubmitted(true);
+    setIsSubmittingSim(false);
+  };
 
   // Generate embers in the background
   useEffect(() => {
@@ -1266,7 +1300,10 @@ export default function App() {
                     onClick={() => {
                       setFranchiseStep(idx);
                       if (idx !== 1) setCapitalRange('');
-                      if (idx !== 3) setFormSubmitted(false);
+                      if (idx !== 3) {
+                        setFormSubmitted(false);
+                        setSimulatedMetadata(null);
+                      }
                     }}
                     className={`flex items-center gap-4 p-3 rounded-xl border text-left transition-all duration-300 ${
                       franchiseStep === idx
@@ -1466,19 +1503,31 @@ export default function App() {
                             <motion.div
                               initial={{ opacity: 0, y: 5 }}
                               animate={{ opacity: 1, y: 0 }}
-                              className="bg-emeraldAccent/20 border border-emeraldAccent/40 rounded-lg p-2 text-center"
+                              className="bg-emeraldAccent/10 border border-emeraldAccent/30 rounded-lg p-2.5 text-left text-[9px] font-mono text-emeraldAccent leading-relaxed space-y-0.5"
                             >
-                              <UserCheck className="w-5 h-5 text-emeraldAccent mx-auto mb-1 animate-bounce" />
-                              <p className="text-[9px] text-emeraldAccent font-mono leading-tight font-bold">
-                                ¡ENVIADO A AIRTABLE! Prospecto calificado en CRM.
-                              </p>
+                              <div className="flex items-center gap-1.5 font-bold mb-1 border-b border-emeraldAccent/20 pb-1">
+                                <UserCheck className="w-4 h-4 text-emeraldAccent shrink-0" />
+                                <span>¡DATOS ENVIADOS A AIRTABLE!</span>
+                              </div>
+                              <p><strong>CRM Status:</strong> Prospecto Calificado</p>
+                              {simulatedMetadata && (
+                                <>
+                                  <p className="truncate"><strong>IP del Firmante:</strong> {simulatedMetadata.ip}</p>
+                                  <p className="truncate"><strong>Dispositivo:</strong> {simulatedMetadata.device}</p>
+                                  <p className="truncate"><strong>Fecha de Firma:</strong> {simulatedMetadata.date}</p>
+                                  <div className="text-[7.5px] bg-emeraldAccent/15 text-center py-0.5 rounded font-bold uppercase tracking-wider mt-1 text-emeraldAccent">
+                                    Trazabilidad Legal Clickwrap Activa
+                                  </div>
+                                </>
+                              )}
                             </motion.div>
                           ) : (
                             <button
-                              onClick={() => setFormSubmitted(true)}
-                              className="w-full bg-emeraldAccent text-[#080706] font-display font-bold text-xs py-2 rounded-lg mt-1.5 uppercase tracking-wider hover:opacity-90 transition-opacity shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+                              onClick={handleSimulatedSubmit}
+                              disabled={isSubmittingSim}
+                              className="w-full bg-emeraldAccent text-[#080706] font-display font-bold text-xs py-2 rounded-lg mt-1.5 uppercase tracking-wider hover:opacity-90 transition-opacity shadow-[0_0_15px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2"
                             >
-                              Enviar Solicitud
+                              {isSubmittingSim ? "Procesando firma..." : "Enviar Solicitud"}
                             </button>
                           )}
                         </div>
