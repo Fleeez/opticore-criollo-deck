@@ -21,10 +21,13 @@ import {
   GitMerge,
   Users,
   ShieldCheck,
-  Sliders
+  Sliders,
+  Link2,
+  FileText,
+  UserCheck
 } from 'lucide-react';
 
-const TOTAL_SLIDES = 9;
+const TOTAL_SLIDES = 10;
 
 // Interactive 3D Card
 function PremiumCard({ children, className = "", style = {} }) {
@@ -351,6 +354,9 @@ export default function App() {
 
   // Rising embers particles state
   const [particles, setParticles] = useState([]);
+  const [franchiseStep, setFranchiseStep] = useState(0);
+  const [capitalRange, setCapitalRange] = useState('');
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   // Generate embers in the background
   useEffect(() => {
@@ -500,6 +506,33 @@ export default function App() {
     }
   ];
 
+  const franchiseFormSteps = [
+    {
+      phase: "Fase 01",
+      title: "La Captura Básica",
+      tag: "El \"Pie en la Puerta\"",
+      logic: "Pedimos Nombre, Email y WhatsApp con bajísima fricción. El objetivo es asegurar el contacto por si el usuario abandona a la mitad. Al hacer clic en 'Siguiente', ya invirtió tiempo (micro-compromiso) y es más probable que termine el proceso de calificación."
+    },
+    {
+      phase: "Fase 02",
+      title: "El Filtro Duro",
+      tag: "La Puerta de Entrada",
+      logic: "Preguntamos el capital disponible. Si el prospecto cuenta con menos de $60k, el formulario se corta automáticamente con una pantalla de agradecimiento elegante sin guardarlo en Airtable ni hacerle firmar el NDA. Frenamos a los curiosos al instante."
+    },
+    {
+      phase: "Fase 03",
+      title: "Due Diligence",
+      tag: "El Filtro de Verdad",
+      logic: "Exigimos obligatoriamente el perfil de LinkedIn y experiencia comercial previa. El mentiroso se frena para no comprometer su identidad real. Al inversor verdadero, en cambio, le da confianza ver que somos estrictos en quién asociamos la marca."
+    },
+    {
+      phase: "Fase 04",
+      title: "El Compromiso Legal",
+      tag: "El Cierre Automatizado",
+      logic: "Mostramos un resumen legal (NDA) de confidencialidad y requerimos checkbox obligatorio. Al hacer clic en 'Enviar Solicitud', toda la radiografía viaja instantáneamente a la primera columna de Airtable como un prospecto calificado listo para agendar."
+    }
+  ];
+
 
   return (
     <div className="relative h-screen w-screen bg-raizBg text-textPrimary font-sans overflow-hidden select-none grid-bg">
@@ -551,7 +584,7 @@ export default function App() {
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
-          <span className="text-[10px] text-goldAccent font-mono ml-1 font-bold">0{activeSlide + 1} / 0{TOTAL_SLIDES}</span>
+          <span className="text-[10px] text-goldAccent font-mono ml-1 font-bold">{(activeSlide + 1).toString().padStart(2, '0')} / {TOTAL_SLIDES.toString().padStart(2, '0')}</span>
         </div>
       </header>
 
@@ -1196,12 +1229,284 @@ export default function App() {
           </motion.div>
         </div>
 
-        {/* SLIDE 6: Interactive ROI Business Tool */}
+        {/* SLIDE 6 (NEW): Anatomía del Formulario Calificador (Ingeniería de Fricción) */}
         <div className="min-w-full h-screen shrink-0 snap-center flex flex-col items-center justify-center px-8 md:px-16 py-20 relative overflow-hidden z-10">
           <motion.div
             variants={slideVariants}
             initial="hidden"
             animate={activeSlide === 5 ? "visible" : "hidden"}
+            className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full"
+          >
+            {/* Left Column: Copywriting & Explanations */}
+            <div className="lg:col-span-6 flex flex-col justify-center">
+              <motion.span
+                variants={elementVariants}
+                className="text-[10px] font-mono text-goldAccent font-bold tracking-widest uppercase mb-3 block"
+              >
+                Filtro de Franquicias por Dentro: Ingeniería de Fricción
+              </motion.span>
+              <motion.h2
+                variants={elementVariants}
+                className="text-3xl md:text-5xl font-extrabold tracking-tight font-display text-textPrimary mb-4"
+              >
+                Anatomía del Formulario Inteligente
+              </motion.h2>
+              <motion.p
+                variants={elementVariants}
+                className="text-xs md:text-sm text-textSecondary font-sans leading-relaxed mb-6"
+              >
+                No es una simple encuesta. Es un embudo de captación diseñado psicológicamente en 4 fases para retener el contacto ante el abandono, filtrar desvíos presupuestarios y validar identidades reales antes de que toquen tu agenda.
+              </motion.p>
+
+              {/* Steps Selector (Tabs) */}
+              <div className="flex flex-col gap-3 pointer-events-auto">
+                {franchiseFormSteps.map((step, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      setFranchiseStep(idx);
+                      if (idx !== 1) setCapitalRange('');
+                      if (idx !== 3) setFormSubmitted(false);
+                    }}
+                    className={`flex items-center gap-4 p-3 rounded-xl border text-left transition-all duration-300 ${
+                      franchiseStep === idx
+                        ? 'bg-goldAccent/10 border-goldAccent/45 shadow-[0_0_15px_rgba(200,162,97,0.08)]'
+                        : 'bg-cardBg/30 border-transparent hover:bg-cardBg/60 text-textSecondary hover:text-textPrimary'
+                    }`}
+                  >
+                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center font-mono text-xs font-bold ${
+                      franchiseStep === idx ? 'bg-goldAccent text-[#080706]' : 'bg-goldAccent/10 text-goldAccent border border-goldAccent/15'
+                    }`}>
+                      0${idx + 1}
+                    </div>
+                    <div>
+                      <h4 className={`text-xs md:text-sm font-display font-bold ${franchiseStep === idx ? 'text-textPrimary' : 'text-textSecondary'}`}>
+                        {step.title}
+                      </h4>
+                      <p className="text-[10px] text-textSecondary font-mono uppercase tracking-wider">{step.tag}</p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Visual Form Simulator & Psychology Card */}
+            <div className="lg:col-span-6 flex flex-col gap-6 justify-center h-full max-h-[580px] pointer-events-auto">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={franchiseStep}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="grid grid-cols-1 gap-6"
+                >
+                  {/* Form Mockup Panel */}
+                  <div className="cyber-card-premium p-6 rounded-2xl border border-goldAccent/15 flex flex-col justify-between min-h-[300px] shadow-2xl relative overflow-hidden bg-cardBg/90">
+                    {/* Header of Form Simulator */}
+                    <div className="flex items-center justify-between pb-4 border-b border-goldAccent/10 mb-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-500/60"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-green-500/60"></div>
+                      </div>
+                      <span className="text-[9px] font-mono tracking-widest text-goldAccent/60 uppercase">criollo.franquicias // live_form</span>
+                    </div>
+
+                    {/* Form Fields Simulation */}
+                    <div className="flex-grow flex flex-col justify-center">
+                      {franchiseStep === 0 && (
+                        <div className="space-y-3">
+                          <div className="text-center mb-2">
+                            <span className="text-[9px] font-mono text-emeraldAccent font-bold bg-emeraldAccent/10 px-2 py-0.5 rounded-full uppercase">Fase 1: Entrada rápida</span>
+                          </div>
+                          <div>
+                            <label className="block text-[10px] font-mono text-textSecondary uppercase tracking-wider mb-1">Nombre Completo</label>
+                            <input type="text" disabled placeholder="Santiago Gómez" className="w-full bg-raizBg/80 border border-goldAccent/15 rounded-lg px-3 py-2 text-xs text-textPrimary placeholder:text-textSecondary/40 focus:outline-none" />
+                          </div>
+                          <div className="grid grid-cols-2 gap-3">
+                            <div>
+                              <label className="block text-[10px] font-mono text-textSecondary uppercase tracking-wider mb-1">Email</label>
+                              <input type="text" disabled placeholder="santiago@inversiones.com" className="w-full bg-raizBg/80 border border-goldAccent/15 rounded-lg px-3 py-2 text-xs text-textPrimary placeholder:text-textSecondary/40 focus:outline-none" />
+                            </div>
+                            <div>
+                              <label className="block text-[10px] font-mono text-textSecondary uppercase tracking-wider mb-1">WhatsApp</label>
+                              <input type="text" disabled placeholder="+54 9 11 5555 4321" className="w-full bg-raizBg/80 border border-goldAccent/15 rounded-lg px-3 py-2 text-xs text-textPrimary placeholder:text-textSecondary/40 focus:outline-none" />
+                            </div>
+                          </div>
+                          <button className="w-full bg-goldAccent text-[#080706] font-display font-bold text-xs py-2 rounded-lg mt-3 uppercase tracking-wider hover:opacity-90 transition-opacity">
+                            Siguiente Paso
+                          </button>
+                        </div>
+                      )}
+
+                      {franchiseStep === 1 && (
+                        <div className="space-y-4">
+                          <div className="text-center mb-1">
+                            <span className="text-[9px] font-mono text-fireAccent font-bold bg-fireAccent/10 px-2 py-0.5 rounded-full uppercase">Fase 2: Filtro Presupuestario</span>
+                          </div>
+                          <p className="text-[11px] text-textSecondary text-center mb-2">Selecciona un capital de inversión estimado:</p>
+                          <div className="grid grid-cols-2 gap-2.5">
+                            <button
+                              onClick={() => setCapitalRange('low')}
+                              className={`p-2.5 rounded-lg border text-xs font-mono transition-all ${
+                                capitalRange === 'low'
+                                  ? 'bg-fireAccent/20 border-fireAccent text-fireAccent font-bold'
+                                  : 'bg-raizBg/60 border-goldAccent/10 text-textSecondary hover:border-goldAccent/30'
+                              }`}
+                            >
+                              &lt; $60,000 USD
+                            </button>
+                            <button
+                              onClick={() => setCapitalRange('high')}
+                              className={`p-2.5 rounded-lg border text-xs font-mono transition-all ${
+                                capitalRange === 'high'
+                                  ? 'bg-emeraldAccent/20 border-emeraldAccent text-emeraldAccent font-bold'
+                                  : 'bg-raizBg/60 border-goldAccent/10 text-textSecondary hover:border-goldAccent/30'
+                              }`}
+                            >
+                              $60k - $120k USD
+                            </button>
+                            <button
+                              onClick={() => setCapitalRange('high')}
+                              className={`p-2.5 rounded-lg border text-xs font-mono transition-all ${
+                                capitalRange === 'high'
+                                  ? 'bg-emeraldAccent/20 border-emeraldAccent text-emeraldAccent'
+                                  : 'bg-raizBg/60 border-goldAccent/10 text-textSecondary hover:border-goldAccent/30'
+                              }`}
+                            >
+                              $120k - $250k USD
+                            </button>
+                            <button
+                              onClick={() => setCapitalRange('high')}
+                              className={`p-2.5 rounded-lg border text-xs font-mono transition-all ${
+                                capitalRange === 'high'
+                                  ? 'bg-emeraldAccent/20 border-emeraldAccent text-emeraldAccent'
+                                  : 'bg-raizBg/60 border-goldAccent/10 text-textSecondary hover:border-goldAccent/30'
+                              }`}
+                            >
+                              &gt; $250,000 USD
+                            </button>
+                          </div>
+
+                          {/* Simulation Result */}
+                          <div className="min-h-[70px] flex items-center justify-center">
+                            {capitalRange === 'low' && (
+                              <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="bg-red-500/10 border border-red-500/25 rounded-lg p-3 text-center"
+                              >
+                                <p className="text-[10px] text-red-400 font-sans leading-relaxed">
+                                  <strong>Pantalla de Agradecimiento Elegante:</strong> "Agradecemos tu interés. Actualmente las rondas requieren un ticket de inversión superior. Guardamos tu perfil para el futuro." <em>(Formulario Cortado, sin Airtable/NDA).</em>
+                                </p>
+                              </motion.div>
+                            )}
+                            {capitalRange === 'high' && (
+                              <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="bg-emeraldAccent/10 border border-emeraldAccent/25 rounded-lg p-3 text-center w-full"
+                              >
+                                <p className="text-[10px] text-emeraldAccent font-sans">
+                                  <strong>¡Acceso Autorizado!</strong> Rango calificado. Se desbloquea la Fase 03 en tiempo real.
+                                </p>
+                              </motion.div>
+                            )}
+                            {!capitalRange && (
+                              <p className="text-[10px] text-textSecondary/60 italic text-center">Haz clic en una opción para probar la Lógica de Bifurcación.</p>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      {franchiseStep === 2 && (
+                        <div className="space-y-3.5">
+                          <div className="text-center mb-1">
+                            <span className="text-[9px] font-mono text-goldAccent font-bold bg-goldAccent/10 px-2 py-0.5 rounded-full uppercase flex items-center justify-center gap-1.5"><Link2 className="w-3 h-3 text-goldAccent" /> Fase 3: Due Diligence</span>
+                          </div>
+                          <div>
+                            <label className="block text-[10px] font-mono text-textSecondary uppercase tracking-wider mb-1">Perfil de LinkedIn (Obligatorio)</label>
+                            <input type="text" disabled placeholder="https://linkedin.com/in/santiago-gomez" className="w-full bg-raizBg/80 border border-goldAccent/15 rounded-lg px-3 py-2 text-xs text-textPrimary placeholder:text-textSecondary/40 focus:outline-none" />
+                          </div>
+                          <div>
+                            <label className="block text-[10px] font-mono text-textSecondary uppercase tracking-wider mb-1">¿Tienes experiencia previa en gastronomía o negocios?</label>
+                            <div className="flex gap-4 mt-1.5">
+                              <label className="flex items-center gap-2 text-xs text-textSecondary">
+                                <input type="radio" disabled checked className="accent-goldAccent" /> Sí, opero locales
+                              </label>
+                              <label className="flex items-center gap-2 text-xs text-textSecondary">
+                                <input type="radio" disabled className="accent-goldAccent" /> No, busco inversión pasiva
+                              </label>
+                            </div>
+                          </div>
+                          <button className="w-full bg-goldAccent text-[#080706] font-display font-bold text-xs py-2 rounded-lg mt-2 uppercase tracking-wider hover:opacity-90 transition-opacity">
+                            Continuar a Validación Legal
+                          </button>
+                        </div>
+                      )}
+
+                      {franchiseStep === 3 && (
+                        <div className="space-y-3">
+                          <div className="text-center flex items-center justify-center gap-1.5 mb-1">
+                            <span className="text-[9px] font-mono text-emeraldAccent font-bold bg-emeraldAccent/10 px-2 py-0.5 rounded-full uppercase flex items-center gap-1"><FileText className="w-3 h-3 text-emeraldAccent" /> Fase 4: Firma NDA Digital</span>
+                          </div>
+                          <div>
+                            <label className="block text-[10px] font-mono text-textSecondary uppercase tracking-wider mb-1">Acuerdo de Confidencialidad (NDA)</label>
+                            <div className="w-full h-16 bg-raizBg/80 border border-goldAccent/15 rounded-lg p-2 text-[9px] text-textSecondary/70 overflow-y-auto leading-normal select-none font-mono">
+                              DECLARACIÓN DE CONFIDENCIALIDAD: Los datos financieros, recetas, procesos y márgenes provistos por Criollo x Opticore son estrictamente confidenciales...
+                            </div>
+                          </div>
+                          <label className="flex items-start gap-2.5 text-[10px] text-textSecondary leading-tight">
+                            <input type="checkbox" defaultChecked disabled className="mt-0.5 accent-emeraldAccent" />
+                            <span>Declaro bajo juramento que los datos de capital e identidad son reales y acepto la confidencialidad.</span>
+                          </label>
+
+                          {formSubmitted ? (
+                            <motion.div
+                              initial={{ opacity: 0, y: 5 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="bg-emeraldAccent/20 border border-emeraldAccent/40 rounded-lg p-2 text-center"
+                            >
+                              <UserCheck className="w-5 h-5 text-emeraldAccent mx-auto mb-1 animate-bounce" />
+                              <p className="text-[9px] text-emeraldAccent font-mono leading-tight font-bold">
+                                ¡ENVIADO A AIRTABLE! Prospecto calificado en CRM.
+                              </p>
+                            </motion.div>
+                          ) : (
+                            <button
+                              onClick={() => setFormSubmitted(true)}
+                              className="w-full bg-emeraldAccent text-[#080706] font-display font-bold text-xs py-2 rounded-lg mt-1.5 uppercase tracking-wider hover:opacity-90 transition-opacity shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+                            >
+                              Enviar Solicitud
+                            </button>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Psychology Card */}
+                  <div className="cyber-card-premium p-4 rounded-xl border border-goldAccent/10 bg-cardBg/50 relative">
+                    <h4 className="text-xs font-mono text-goldAccent uppercase tracking-widest mb-1.5 flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5" /> Psicología y Lógica del Paso:
+                    </h4>
+                    <p className="text-[11px] md:text-xs text-textSecondary leading-relaxed">
+                      {franchiseFormSteps[franchiseStep].logic}
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* SLIDE 7: Interactive ROI Business Tool */}
+        <div className="min-w-full h-screen shrink-0 snap-center flex flex-col items-center justify-center px-8 md:px-16 py-20 relative overflow-hidden z-10">
+          <motion.div
+            variants={slideVariants}
+            initial="hidden"
+            animate={activeSlide === 6 ? "visible" : "hidden"}
             className="max-w-6xl w-full flex flex-col justify-center items-center h-full"
           >
             {/* Section Header */}
@@ -1329,7 +1634,7 @@ export default function App() {
           <motion.div
             variants={slideVariants}
             initial="hidden"
-            animate={activeSlide === 6 ? "visible" : "hidden"}
+            animate={activeSlide === 7 ? "visible" : "hidden"}
             className="max-w-5xl w-full flex flex-col justify-center items-center h-full"
           >
             {/* Subtle Badge */}
@@ -1426,7 +1731,7 @@ export default function App() {
           <motion.div
             variants={slideVariants}
             initial="hidden"
-            animate={activeSlide === 7 ? "visible" : "hidden"}
+            animate={activeSlide === 8 ? "visible" : "hidden"}
             className="max-w-5xl w-full flex flex-col justify-center items-center h-full"
           >
             {/* Subtle Badge */}
@@ -1580,7 +1885,7 @@ export default function App() {
           <motion.div
             variants={slideVariants}
             initial="hidden"
-            animate={activeSlide === 8 ? "visible" : "hidden"}
+            animate={activeSlide === 9 ? "visible" : "hidden"}
             className="max-w-4xl w-full flex flex-col justify-center items-center h-full"
           >
             {/* Dark Pricing Card Container */}
